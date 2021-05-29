@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/_layout}">
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="page-header">
+					<i class="fa fa-files-o"></i> Stocks - Buy / Sell
+				</h3>
+				<ol class="breadcrumb">
+					<li><i class="fa fa-home"></i><a th:href="@{/welcome/index}">Home</a></li>
+					<li><i class="icon_document_alt"></i>Stocks</li>
+					<li><i class="fa fa-files-o"></i>Buy / Sell</li>
+				</ol>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-lg-12">
+				<section class="panel">
+					<header class="panel-heading"> Buy / Sell form </header>
+					<div class="panel-body">
+						<div class="form">
+							<form name="buy-sell-form" class="form-validate form-horizontal" th:action="@{/stock-actions/save}" method="post" th:object="${stock}" >
+								<input type="hidden" th:field="*{id}"/>
+								<div class="form-group ">
+									<label for="fullname" class="control-label col-lg-2">Stock Name
+										<span class="required">*</span>
+									</label>
+									<div class="col-lg-10">
+										<select class=" form-control" th:field="*{stock}">
+											<option value="">-- Select --</option>
+											<option th:each="stock:${stocksList}" th:value="${stock.id}" th:text="${stock.name}"></option>
+										</select>
+									</div>
+								</div> 
+								<div class="form-group ">
+									<label for="address" class="control-label col-lg-2">Type
+										<span class="required">*</span>
+									</label>
+									<div class="col-lg-10">
+										<input th:field="*{actionType}" type="radio" th:each="type: ${stockActionTypes}" th:text="${type}" th:value="${type}"/> 
+									</div>
+								</div>
+								<div class="form-group ">
+									<label for="username" class="control-label col-lg-2">Date
+										<span class="required">*</span>
+									</label>
+									<div class="col-lg-10">
+										<input class="form-control " th:field="*{actionDate}" type="date" />
+									</div>
+								</div>
+								<div class="form-group ">
+									<label for="quantity" class="control-label col-lg-2">Quantity
+										<span class="required">*</span>
+									</label>
+									<div class="col-lg-10">
+										<input class="form-control " th:field="*{quantity}" type="number" />
+									</div>
+								</div>
+								<div class="form-group ">
+									<label for="price" class="control-label col-lg-2">Price
+										 <span class="required">*</span>
+									</label>
+									<div class="col-lg-10">
+										<input class="form-control " th:field="*{price}" type="text" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button class="btn btn-primary" type="submit">Save</button>
+										<button class="btn btn-default" type="button" onclick="reload()">Cancel</button>
+										<span th:text="${message}"></span>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		
+		<script>
+			$(function(){
+					$('form[name="buy-sell-form"] #actionType1').attr('checked', true);
+			});
+		</script>
+	</div>
+</html>

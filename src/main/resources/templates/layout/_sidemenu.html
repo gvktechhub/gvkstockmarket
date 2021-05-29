@@ -1,0 +1,43 @@
+<aside th:fragment="sidemenu">
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a class="" th:href="@{/welcome/index}">
+                          <i class="icon_house_alt"></i>
+                          <span>Dashboard</span>
+                      </a>
+          </li>
+          <li class="sub-menu">
+            <a class="">
+                          <i class="icon_document_alt"></i>
+                          <span>Stocks</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a th:href="@{/stock-names/list/}">Stock Names</a></li>
+              <li><a th:href="@{/stock-actions/}">Buy / Sell</a></li>
+              <li><a th:href="@{/stock-actions/available-stocks/}">Available Stocks</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a class="">
+                          <i class="icon_document_alt"></i>
+                          <span>Reports</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" th:href="@{/stock-actions/available-stocks/}">Available Stocks</a></li>
+              <li><a class="" th:href="@{/stock-reports/more-than-year/}">More Than Year Stocks</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="" th:href="widgets.html">
+                          <i class="icon_genius"></i>
+                          <span>Widgets</span>
+                      </a>
+          </li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>

@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/_layout}">
+
+	<div layout:fragment="page-content">
+	
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="page-header">
+					<i class="fa fa-files-o"></i> Stocks - Available Stocks
+				</h3>
+				<ol class="breadcrumb">
+					<li><i class="fa fa-home"></i><a th:href="@{/welcome/index}">Home</a></li>
+					<li><i class="icon_document_alt"></i>Stocks</li>
+					<li><i class="fa fa-files-o"></i>Available Stocks</li>
+				</ol>
+			</div>
+		</div>
+		
+		<div class="row">
+          <div class="col-lg-12">
+            <section class="panel">
+              <header class="panel-heading">
+                Available Stocks
+              </header>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Stock</th>
+                      <th>Quantity</th>
+                      <th>Average Price</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="record, status: ${availableStocksList}">
+                      <td th:text="${status.index + 1}"></td>
+                      <td th:text="${record[1]}"></td>
+                      <td th:text="${record[2]}"></td>
+                      <td th:text="${record[3]}"></td> 
+                      <td th:text="${record[2] * record[3]}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </section>
+          </div>
+        </div>
+	</div>
+
+</html>
