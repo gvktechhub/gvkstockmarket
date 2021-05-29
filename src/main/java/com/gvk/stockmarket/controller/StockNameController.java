@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.aop.ThrowsAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,8 @@ import com.gvk.stockmarket.services.IStockNameService;
 @Controller
 @RequestMapping(value = "/stock-names")
 public class StockNameController {
+	
+	private static final Logger log = LoggerFactory.getLogger(StockNameController.class);
 	
 	private static final String folder = "/stockname/";
 	
