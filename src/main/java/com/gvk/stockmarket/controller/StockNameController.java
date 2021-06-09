@@ -11,15 +11,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gvk.stockmarket.enums.ModelTypes;
 import com.gvk.stockmarket.enums.PageTypes;
 import com.gvk.stockmarket.exceptions.StockNameIdNotFoundException;
 import com.gvk.stockmarket.models.StockName;
 import com.gvk.stockmarket.services.IStockNameService;
+import com.gvk.stockmarket.services.MailService;
 
 @Controller
 @RequestMapping(value = "/stock-names")
@@ -32,9 +35,13 @@ public class StockNameController {
 	@Autowired
 	private IStockNameService stockNameService;
 	
+	@Autowired
+	private MailService mailService;
+	
 	@GetMapping(value = "/")
 	public String index(Model model) {
 		setInModel(model, ModelTypes.NEW_OBJECT);
+		mailService.send("gvkhelp@gmail.com", null, null, "SM TEST", "text message", null);
 		return returnType(PageTypes.FORM);
 	}
 
@@ -74,6 +81,14 @@ public class StockNameController {
 		}
 		else throw new StockNameIdNotFoundException("Stock Name ( "+id+ " ) is not found.");
 		return returnType(PageTypes.FORM);
+	}
+	
+	@ResponseBody
+	@PatchMapping(value="/updateCurrentPriceByStockName")
+	public StockName updateCurrentPriceByStockName(
+			@RequestParam("stockNameId") Integer stockNameId, 
+			@RequestParam("currentPrice") Double currentPrice) {
+		return stockNameService.updateCurrentPriceByStockName(stockNameId, currentPrice);
 	}
 	
 	private String returnType(PageTypes type) {

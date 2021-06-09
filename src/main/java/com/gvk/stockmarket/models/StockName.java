@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,4 +39,8 @@ public class StockName {
 	@Column(name = "symobl", nullable = false, unique = true)
 	@NotBlank
 	private String symbol;
+	
+	@Column(name="current_price", nullable = false)
+	@Value("0")
+	private Double currentPrice;
 }

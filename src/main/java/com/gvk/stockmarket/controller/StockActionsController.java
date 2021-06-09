@@ -1,5 +1,9 @@
 package com.gvk.stockmarket.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +45,13 @@ public class StockActionsController {
 	
 	@GetMapping(value="/available-stocks")
 	public String getAvailableStocks(Model model) {
-		model.addAttribute("availableStocksList", stockActionsService.getAvailableStocks());
+		List<Object[]> availableStocks = stockActionsService.getAvailableStocks();
+		Double totalamount = 0.0;
+		totalamount = availableStocks.stream().map(record -> {
+			return Double.parseDouble(record[2].toString()) * Double.parseDouble(record[3].toString());
+		}).collect(Collectors.toList()).stream().mapToDouble(Double::valueOf).sum();
+		model.addAttribute("availableStocksList", availableStocks);
+		model.addAttribute("totalamount", totalamount);
 		return folder+"available-stocks";
 	}
 
