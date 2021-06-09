@@ -68,7 +68,7 @@
 					var element = $(this);
 					$.ajax({
 						type: 'PATCH',
-						url: '/SM/stock-names/updateCurrentPriceByStockName',
+						url: contextPath+'stock-names/updateCurrentPriceByStockName',
 						data: {
 							stockNameId: element.parent().find('.stocknameid').val(),
 							currentPrice: element.val()
