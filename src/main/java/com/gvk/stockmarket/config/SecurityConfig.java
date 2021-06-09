@@ -12,8 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	protected void configure(AuthenticationManagerBuilder auth) {
 		try {
-			auth.inMemoryAuthentication().withUser("vamsi").password("{noop}vamsi").authorities("ADMIN");
-			auth.inMemoryAuthentication().withUser("prasad").password("{noop}prasad").authorities("SUBADMIN");
+			auth.inMemoryAuthentication().withUser("vamsi").password("{noop}krishna").authorities("ADMIN");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -21,8 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	protected void configure(HttpSecurity http) {
 		try {
-			http.authorizeRequests()
+			http
+			.csrf().disable()
+			.authorizeRequests()
 			.antMatchers("/welcome/**").authenticated()
+			.antMatchers("/apis/**").permitAll()
 			.anyRequest().permitAll()
 			
 			.and()

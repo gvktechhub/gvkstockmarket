@@ -35,4 +35,16 @@ public class StockNameServiceImpl implements IStockNameService {
 	public void delete(Integer id) {
 		repo.deleteById(id);
 	}
+
+	@Override
+	public StockName updateCurrentPriceByStockName(Integer stockNameId, Double currentPrice) {
+		Optional<StockName> stockNameObj = get(stockNameId);
+		StockName stockName = null;
+		if(stockNameObj.isPresent()) {
+			stockName = stockNameObj.get();
+			stockName.setCurrentPrice(currentPrice);
+			save(stockName);
+		}
+		return stockName;
+	}
 }

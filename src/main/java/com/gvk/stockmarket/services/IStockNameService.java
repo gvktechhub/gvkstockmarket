@@ -14,5 +14,7 @@ public interface IStockNameService {
 	public Optional<StockName> get(Integer id);
 	
 	public void delete(Integer id);
+	
+	public StockName updateCurrentPriceByStockName(Integer stockNameId, Double currentPrice);
 
 }

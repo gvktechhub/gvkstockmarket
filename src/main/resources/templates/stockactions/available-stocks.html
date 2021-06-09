@@ -33,23 +33,53 @@
                       <th>Quantity</th>
                       <th>Average Price</th>
                       <th>Total</th>
+                      <th>Current Price</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <tr th:each="record, status: ${availableStocksList}">
+                   <tr th:each="record, status: ${availableStocksList}">
                       <td th:text="${status.index + 1}"></td>
                       <td th:text="${record[1]}"></td>
                       <td th:text="${record[2]}"></td>
                       <td th:text="${record[3]}"></td> 
                       <td th:text="${record[2] * record[3]}"></td>
+                      <td><input type="text" class="form-control updateCurrentPrice" data-stocknameid="th:text=${record[0]}" th:value="${record[4]}"/></td>
                     </tr>
                   </tbody>
+                  <tfoot>
+                  	 <tr>
+                    	<td colspan="4" class="custom-text-right highlate-big-text">Total Amount</td>
+                    	<td th:text="${totalamount}" class="highlate-big-text"></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
 
             </section>
           </div>
         </div>
+        <!-- PAGE LEVEL SCRIPT -->
+		<script>
+			$(function(){
+				$(document).delegate('.updateCurrentPrice', 'focusout', function(){
+					var element = $(this);
+					$.ajax({
+						type: 'PATCH',
+						url: '/SM/stock-names/updateCurrentPriceByStockName',
+						data: {
+							stockNameId: 3,
+							currentPrice: element.val()
+						},
+						success: function(data) {
+							
+						},
+						error: function(e) {
+							
+						}
+					});
+				});
+			});
+		</script>
 	</div>
 
 </html>
