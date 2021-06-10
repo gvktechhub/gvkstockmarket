@@ -30,7 +30,7 @@ public class StockNameController {
 	
 	private static final Logger log = LoggerFactory.getLogger(StockNameController.class);
 	
-	private static final String folder = "/stockname/";
+	private static final String folder = "pages/stockname/";
 	
 	@Autowired
 	private IStockNameService stockNameService;
