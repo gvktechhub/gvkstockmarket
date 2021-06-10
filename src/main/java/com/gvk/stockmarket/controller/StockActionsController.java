@@ -27,7 +27,7 @@ public class StockActionsController {
 	@Autowired
 	private IStockActionsService stockActionsService;
 	
-	private static String folder = "stockactions/";
+	private static String folder = "pages/stockactions/";
 	
 	@GetMapping(value = "/")
 	public String action(Model model) {

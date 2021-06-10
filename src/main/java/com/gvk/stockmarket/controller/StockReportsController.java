@@ -12,7 +12,7 @@ import com.gvk.stockmarket.services.IStockReportsService;
 @Controller
 public class StockReportsController {
 	
-	private static final String folder = "/reports/";
+	private static final String folder = "pages/reports/";
 	
 	@Autowired
 	private IStockReportsService stockReportsService;

@@ -36,11 +36,10 @@ public class StockName {
 	private String name;
 	
 	@NonNull
-	@Column(name = "symobl", nullable = false, unique = true)
+	@Column(name = "symobl", nullable = false, unique = true, length = 10)
 	@NotBlank
 	private String symbol;
 	
 	@Column(name="current_price", nullable = false)
-	@Value("0")
-	private Double currentPrice;
+	private Double currentPrice = 0.0;  //setting default value
 }
