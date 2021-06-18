@@ -1,6 +1,7 @@
 package com.gvk.stockmarket.services;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.gvk.stockmarket.models.StockName;
@@ -15,6 +16,6 @@ public interface IStockNameService {
 	
 	public void delete(Integer id);
 	
-	public StockName updateCurrentPriceByStockName(Integer stockNameId, Double currentPrice);
+	public StockName updateCurrentPriceByStockName(Map<String, Object> map);
 
 }

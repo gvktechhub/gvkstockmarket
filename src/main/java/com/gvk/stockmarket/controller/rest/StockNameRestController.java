@@ -17,20 +17,26 @@ import com.gvk.stockmarket.exceptions.StockNameIdNotFoundException;
 import com.gvk.stockmarket.models.StockName;
 import com.gvk.stockmarket.services.IStockNameService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/apis/stock-names")
+@Api( description = "Stock Name - Rest Operations")
 public class StockNameRestController {
 	
 	@Autowired
 	private IStockNameService stockNameService;
 	
 	@PostMapping(value="/save")
+	@ApiOperation("Save / Update Operation")
 	public ResponseEntity<StockName> save(@RequestBody StockName stock) {
 		StockName stockName = stockNameService.save(stock);
 		return ResponseEntity.ok(stockName);
 	}
 	
 	@GetMapping(value="/get")
+	@ApiOperation("Get Operation")
 	public ResponseEntity<StockName> get(@RequestParam(name = "id", required = false, defaultValue = "1") Integer id) {
 		Optional<StockName> stockName = stockNameService.get(id);
 		if(stockName.isPresent()) {
@@ -40,6 +46,7 @@ public class StockNameRestController {
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
+	@ApiOperation("Delete Operation")
 	public ResponseEntity<String> delete(@PathVariable(name = "id") Integer id) {
 		stockNameService.delete(id);
 		return ResponseEntity.ok(new StringBuilder().append("Stock").append(" ( ")
