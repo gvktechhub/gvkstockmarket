@@ -1,5 +1,6 @@
 package com.gvk.stockmarket.controller;
 
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -85,10 +86,8 @@ public class StockNameController {
 	
 	@ResponseBody
 	@PatchMapping(value="/updateCurrentPriceByStockName")
-	public StockName updateCurrentPriceByStockName(
-			@RequestParam("stockNameId") Integer stockNameId, 
-			@RequestParam("currentPrice") Double currentPrice) {
-		return stockNameService.updateCurrentPriceByStockName(stockNameId, currentPrice);
+	public StockName updateCurrentPriceByStockName(@RequestParam Map<String, Object> map) {
+		return stockNameService.updateCurrentPriceByStockName(map);
 	}
 	
 	private String returnType(PageTypes type) {

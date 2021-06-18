@@ -1,6 +1,7 @@
 package com.gvk.stockmarket.services.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,20 @@ public class StockNameServiceImpl implements IStockNameService {
 	}
 
 	@Override
-	public StockName updateCurrentPriceByStockName(Integer stockNameId, Double currentPrice) {
-		Optional<StockName> stockNameObj = get(stockNameId);
+	public StockName updateCurrentPriceByStockName(Map<String, Object> map) {
+		Optional<StockName> stockNameObj = get(Integer.valueOf(map.get("stockNameId").toString()));
 		StockName stockName = null;
 		if(stockNameObj.isPresent()) {
+			
+			Double currentPrice = Double.valueOf(map.get("currentPrice").toString());
+			Double avgprice = Double.valueOf(map.get("avgprice").toString());
+			Integer quantity = Integer.valueOf(map.get("quantity").toString());
+			Double investment = quantity * avgprice;
+			
 			stockName = stockNameObj.get();
 			stockName.setCurrentPrice(currentPrice);
+			stockName.setCurrentValue(quantity * currentPrice);
+			stockName.setProfitOrLossPercent((stockName.getCurrentValue() - investment)*100/investment);
 			save(stockName);
 		}
 		return stockName;

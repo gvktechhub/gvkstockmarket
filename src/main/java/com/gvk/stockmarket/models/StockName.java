@@ -42,4 +42,10 @@ public class StockName {
 	
 	@Column(name="current_price", nullable = false)
 	private Double currentPrice = 0.0;  //setting default value
+	
+	@Column(name="current_value", nullable = false)
+	private Double currentValue = 0.0;
+	
+	@Column(name="profit_or_loss_percent", nullable = false)
+	private Double profitOrLossPercent = 0.0;
 }

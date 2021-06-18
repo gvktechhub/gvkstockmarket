@@ -46,8 +46,8 @@
                    	  <input type="hidden" th:value="${record[0]}" class="stocknameid"/>
                       <td th:text="${status.index + 1}"></td>
                       <td th:text="${record[1]}"></td>
-                      <td th:text="${record[2]}"></td>
-                      <td th:text="${#numbers.formatDecimal(record[3], 1, 'COMMA', 2, 'POINT')}"></td> 
+                      <td th:text="${record[2]}" class="quantity"></td>
+                      <td th:text="${record[3]}" class="avgprice"></td> 
                       <td th:text="${#numbers.formatDecimal(record[2] * record[3], 1, 'COMMA', 2, 'POINT')}"></td>
                       <td style="width:100px;"><input type="text" class="form-control updateCurrentPrice" th:value="${record[4]}"/></td>
                       <td class="current-value" th:text="${#numbers.formatDecimal(record[4] * record[2], 1, 'COMMA', 2, 'POINT')}"></td>

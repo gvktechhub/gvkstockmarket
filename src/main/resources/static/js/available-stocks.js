@@ -8,14 +8,16 @@ $(function() {
 			'focusout',
 			function() {
 				var element = $(this);
+				var row = element.parent().parent();
 				$.ajax({
 					type : 'PATCH',
 					url : contextPath
 							+ 'stock-names/updateCurrentPriceByStockName',
 					data : {
-						stockNameId : element.parent().parent().find(
-								'.stocknameid').val(),
-						currentPrice : element.val()
+						stockNameId : row.find('.stocknameid').val(),
+						currentPrice : element.val(),
+						quantity: row.find('.quantity').text(),
+						avgprice: row.find('.avgprice').text()
 					},
 					success : function(data) {
 
