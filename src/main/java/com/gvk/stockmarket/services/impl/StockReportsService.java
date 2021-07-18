@@ -19,4 +19,9 @@ public class StockReportsService implements IStockReportsService {
 		return stocksRepo.getStocksForMoreThanOneYear();
 	}
 
+	@Override
+	public List<Object[]> getUpcomingMoreThanOneYearStocks() {
+		return stocksRepo.getStocksForUpcomingMoreThanOneYear();
+	}
+
 }

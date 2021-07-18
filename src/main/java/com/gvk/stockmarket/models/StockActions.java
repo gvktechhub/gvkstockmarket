@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Table(name="stock_actions")
 @NoArgsConstructor
 @AllArgsConstructor
-public class StockActions {
+public class StockActions extends Auditable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -20,6 +20,7 @@ public class StockReportsController {
 	@GetMapping(value = "/more-than-year")
 	public String moreThanYear(Model model) {
 		model.addAttribute("moreThanOneYearStocksList", stockReportsService.getMoreThanOneYearStocks());
+		model.addAttribute("upcomingMoreThanOneYearStocksList", stockReportsService.getUpcomingMoreThanOneYearStocks());
 		return folder+"more-than-year";
 	}
 

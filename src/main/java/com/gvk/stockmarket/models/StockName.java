@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class StockName {
+public class StockName extends Auditable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
