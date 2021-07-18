@@ -32,23 +32,22 @@ public class Auditable {
 	@CreatedBy
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = true, updatable = false)
-	@NotBlank
-	private User createdBy;
+	//@NotBlank
+	private User createdBy = null;
 	
 	@CreatedDate
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false, nullable = false)
-	@NotBlank
-	private Date createdTimeStamp;
+	private Date createdTimeStamp = new Date();
 	
 	@LastModifiedBy
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = true)
-	private User lastUpdatedBy;
+	private User lastUpdatedBy = null;
 	
 	@LastModifiedDate
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
-	private Date lastUpdatedTimeStamp;
+	private Date lastUpdatedTimeStamp= new Date();
 
 }
