@@ -39,6 +39,7 @@ public class StockActionsController {
 	
 	@PostMapping(value="/save")
 	public String save(@ModelAttribute("stock") StockActions stock) {
+		System.out.println(stock);
 		stockActionsService.save(stock);
 		return "redirect:/stock-actions/";
 	}

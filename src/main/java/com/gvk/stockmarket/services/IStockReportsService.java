@@ -5,5 +5,7 @@ import java.util.List;
 public interface IStockReportsService {
 	
 	List<Object[]> getMoreThanOneYearStocks();
+	
+	List<Object[]> getUpcomingMoreThanOneYearStocks();
 
 }

@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @Table(name="stocks")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Stocks {
+public class Stocks extends Auditable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

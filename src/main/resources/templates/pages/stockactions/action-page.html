@@ -24,7 +24,7 @@
 					<div class="panel-body">
 						<div class="form">
 							<form name="buy-sell-form" class="form-validate form-horizontal" th:action="@{/stock-actions/save}" method="post" th:object="${stock}" >
-								<input type="hidden" th:field="*{id}"/>
+								<!-- <input type="hidden" th:field="*{id}" th:value="0"/> -->
 								<div class="form-group ">
 									<label for="fullname" class="control-label col-lg-2">Stock Name
 										<span class="required">*</span>

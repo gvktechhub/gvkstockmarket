@@ -8,7 +8,7 @@
         <!--overview start-->
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
+            <h3 class="page-header"><i class="fa fa-user"></i>  Hi <span th:text="${session.username}"></span>, <span id="wish-message"></span>..!</h3>
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a th:href="index.html">Home</a></li>
               <li><i class="fa fa-laptop"></i>Dashboard</li>
@@ -654,6 +654,20 @@
 
         </div>
         <!-- project team & activity end -->
+        
+        <script>
+        	$(function(){
+        		setWishMessage();
+        	});
+        	
+        	function setWishMessage() {
+        		var hour = new Date().getHours();
+        		var wishMessage = "Good Morning";
+        		if(hour >= 12 && hour < 16) wishMessage = "Good Afternoon";
+        		else if(hour >= 16 && hour <= 23) wishMessage = "Good Evening";
+        		$('#wish-message').text(wishMessage);
+        	}
+        </script>
 </div>
      
    
