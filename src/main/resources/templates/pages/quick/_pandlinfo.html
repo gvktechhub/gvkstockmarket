@@ -1,0 +1,35 @@
+<div class="row" th:fragment="pandlinfo_content">
+	<div class="col-lg-3">
+		<section class="panel">
+			<header class="panel-heading"> Profitable Stocks </header>
+			<ul class="list-group">
+				<li th:each="record, status: ${topProfitableStocks}"
+					class="list-group-item"><span th:text="${record[1]}"></span> <span
+					class="green-color highlate-text custom-text-right"
+					th:text="${record[6]}"></span></li>
+			</ul>
+		</section>
+	</div>
+	<div class="col-lg-3">
+		<section class="panel">
+			<header class="panel-heading"> Unprofitable Stocks </header>
+			<ul class="list-group">
+				<li th:each="record, status: ${topUnprofitableStocks}"
+					class="list-group-item"><span th:text="${record[1]}"></span> <span
+					class="red-color highlate-text custom-text-right"
+					th:text="${record[6]}"></span></li>
+			</ul>
+		</section>
+	</div>
+	<div class="col-lg-6">
+		<section class="panel">
+			<header class="panel-heading"> <center>Favourite Stocks</center> </header>
+			<ul class="list-group col-lg-12">
+				<li th:each="record, status: ${favouriteStocks}"
+					class="list-group-item col-lg-4">
+					<span th:text="${record.name}"></span>
+				</li>
+			</ul>
+		</section>
+	</div>
+</div>
