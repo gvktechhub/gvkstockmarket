@@ -46,4 +46,7 @@ public class StockName {
 	
 	@Column(name="profit_or_loss_percent", nullable = false)
 	private Double profitOrLossPercent = 0.0;
+	
+	@Column(nullable = false)
+	private Boolean favorite = false;
 }
